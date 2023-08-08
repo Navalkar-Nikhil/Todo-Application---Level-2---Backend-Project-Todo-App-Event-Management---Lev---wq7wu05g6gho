@@ -14,9 +14,23 @@ Complete your other field here
 
 var taskSchema = mongoose.Schema({
   //Write your code here.
+  heading:{
+    type:String,
+    required:true},
+  description:{
+    type:String,
+    required:true},
+  status:{
+  type:String,
+  enum:['pending','done'],
+    default:'pending'},
+  creator_id:{
+  type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'}
+ 
 },
-{ /* ... */ }
+{ timestamps: true }
 );
 
 
-module.exports = mongoose.model("Task", taskSchema);;
+module.exports = mongoose.model("Task", taskSchema);
